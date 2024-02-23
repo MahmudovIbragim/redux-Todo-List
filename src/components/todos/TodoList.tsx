@@ -14,10 +14,10 @@ const TodoList = () => {
   const dispach = useDispatch();
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<string>("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState<number>(0);
   const [newName, setNewName] = useState<string>("");
   const [newImage, setNewImage] = useState<string>("");
-  const [newPrice, setNewPrice] = useState(0);
+  const [newPrice, setNewPrice] = useState<number>(0);
   const [upDate, setUpDate] = useState<number | null>(null);
 
   const handleAddTodo = () => {
