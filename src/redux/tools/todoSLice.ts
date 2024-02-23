@@ -5,6 +5,7 @@ interface TodoType {
   name: string;
   image: string;
   price: number;
+  isComplated: boolean;
 }
 
 const initialState: { data: TodoType[] } = {
@@ -21,6 +22,7 @@ const todoSlice = createSlice({
         name: action.payload.name,
         image: action.payload.image,
         price: action.payload.price,
+        isComplated: false,
       };
       state.data.push(newData);
     },
@@ -47,8 +49,15 @@ const todoSlice = createSlice({
     deleteAll: (state) => {
       state.data = [];
     },
+    complating: (state, action) => {
+      const filtred = state.data.find((item) => item.id === action.payload);
+      if (filtred) {
+        filtred.isComplated = !filtred.isComplated
+      }
+    },
   },
 });
 
-export const { addTodo, deleteTodo, upDateTodo, deleteAll } = todoSlice.actions;
+export const { addTodo, deleteTodo, upDateTodo, deleteAll, complating } =
+  todoSlice.actions;
 export const todoReducer = todoSlice.reducer;

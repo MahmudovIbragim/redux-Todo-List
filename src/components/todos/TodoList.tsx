@@ -3,6 +3,7 @@ import { useAppSelector } from "../../redux/store";
 import { useState } from "react";
 import {
   addTodo,
+  complating,
   deleteAll,
   deleteTodo,
   upDateTodo,
@@ -59,6 +60,10 @@ const TodoList = () => {
   };
   const deleteItems = () => {
     dispach(deleteAll());
+  };
+
+  const toggleComplated = (id: number) => {
+    dispach(complating(id));
   };
 
   return (
@@ -122,7 +127,19 @@ const TodoList = () => {
             ) : (
               <>
                 <div className={scss.card}>
-                  <h1>{item.name}</h1>
+                  <h1
+                    className={
+                      item.isComplated ? `${scss.line}` : `${scss.noLine}`
+                    }
+                  >
+                    <input
+                      type="checkbox"
+                      checked={item.isComplated}
+                      onChange={() => toggleComplated(item.id)}
+                    />
+
+                    {item.name}
+                  </h1>
                   <img src={item.image} alt="img" />
                   <h3>{item.price}</h3>
                   <div className={scss.card_btn}>
@@ -151,3 +168,7 @@ const TodoList = () => {
 };
 
 export default TodoList;
+
+// name: action.payload.name,
+//         image: action.payload.image,
+//         price: action.payload.price

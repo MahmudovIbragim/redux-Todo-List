@@ -178,6 +178,16 @@
       max-width: 400px;
       width: 100%;
       color: #000000;
+      input:checked + h1 {
+        text-decoration: line-through;
+        color: red;
+      }
+      .line {
+        text-decoration: line-through;
+      }
+      .noLine {
+        text-decoration: none;
+      }
 
       img {
         max-width: 100%;
